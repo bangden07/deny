@@ -6,15 +6,24 @@ const BaseStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+
   body {
     background-color: ${({ theme }) => theme.colors.body};
     color: ${({ theme }) => theme.colors.text[100]};
     font-family: 'IBM Plex Mono', monospace;
     font-size: 1rem;
     font-weight: 500;
-    padding: 1rem;
-    min-height: 100vh;
     transition: background-color 0.3s ease;
+  }
+
+  #root {
+    height: 100%;
   }
 
   a {
@@ -55,10 +64,10 @@ const BaseStyle = createGlobalStyle`
 `;
 
 const GlobalStyle = () => (
-    <>
-        <Normalize />
-        <BaseStyle />
-    </>
+  <>
+    <Normalize />
+    <BaseStyle />
+  </>
 );
 
 export default GlobalStyle;

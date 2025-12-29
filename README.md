@@ -1,7 +1,5 @@
 # Deny Porto | Terminal Portfolio
 
-![Deny Porto](public/favicon.png)
-
 Website portfolio berbasis terminal yang interaktif. Jelajahi proyek, skill, dan pengalaman saya melalui command-line interface.
 
 🌐 **Live Demo**: [deny.biz.id](https://deny.biz.id)

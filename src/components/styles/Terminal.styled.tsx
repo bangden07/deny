@@ -1,5 +1,101 @@
 import styled from "styled-components";
 
+// iMac Window Frame Components
+export const WindowFrame = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0;
+  overflow: hidden;
+  background: ${({ theme }) => theme.colors.body};
+`;
+
+export const TitleBar = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  background: linear-gradient(
+    180deg,
+    ${({ theme }) => theme.colors.body} 0%,
+    ${({ theme }) => `${theme.colors.body}ee`} 100%
+  );
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  user-select: none;
+  flex-shrink: 0;
+`;
+
+export const TrafficLights = styled.div`
+  display: flex;
+  gap: 8px;
+  z-index: 1;
+`;
+
+interface TrafficLightProps {
+  $color: 'red' | 'yellow' | 'green';
+}
+
+export const TrafficLight = styled.button<TrafficLightProps>`
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  position: relative;
+  
+  ${({ $color }) => {
+    switch ($color) {
+      case 'red':
+        return `
+          background: linear-gradient(180deg, #ff6058 0%, #ed4c41 100%);
+          box-shadow: 0 0 0 0.5px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.3);
+        `;
+      case 'yellow':
+        return `
+          background: linear-gradient(180deg, #ffc130 0%, #f5b01e 100%);
+          box-shadow: 0 0 0 0.5px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.3);
+        `;
+      case 'green':
+        return `
+          background: linear-gradient(180deg, #2acb42 0%, #24b33a 100%);
+          box-shadow: 0 0 0 0.5px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.3);
+        `;
+    }
+  }}
+  
+  &:hover {
+    filter: brightness(1.1);
+  }
+  
+  &:active {
+    filter: brightness(0.9);
+  }
+`;
+
+export const WindowTitle = styled.span`
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: ${({ theme }) => theme.colors.text[300]};
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+`;
+
+export const WindowContent = styled.div`
+  flex: 1;
+  padding: 1rem 1.25rem;
+  overflow-y: auto;
+  
+  @media (max-width: 550px) {
+    padding: 0.75rem 1rem;
+  }
+`;
+
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column-reverse;
@@ -9,8 +105,14 @@ export const Wrapper = styled.div`
 
 export const Form = styled.form`
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  align-items: center;
   margin-bottom: 0.25rem;
+  gap: 0.5rem;
+  
+  @media (max-width: 550px) {
+    flex-wrap: wrap;
+  }
 `;
 
 export const InputLine = styled.div`

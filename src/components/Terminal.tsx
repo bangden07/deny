@@ -19,6 +19,12 @@ import {
     MobileSpan,
     DesktopSpan,
     Wrapper,
+    WindowFrame,
+    TitleBar,
+    TrafficLights,
+    TrafficLight,
+    WindowTitle,
+    WindowContent,
 } from "./styles/Terminal.styled";
 import { argTab } from "../utils/funcs";
 
@@ -184,72 +190,76 @@ const Terminal = () => {
     }, [inputRef, inputVal, pointer]);
 
     return (
-        <Wrapper data-testid="terminal-wrapper" ref={containerRef}>
-            {hints.length > 1 && (
-                <div>
-                    {hints.map(hCmd => (
-                        <Hints key={hCmd}>{hCmd}</Hints>
-                    ))}
-                </div>
-            )}
-            <Form onSubmit={handleSubmit}>
-                <TermInfo />
-                <DesktopSpan> </DesktopSpan>
-                <MobileBr />
-                <InputLine>
-                    <MobileSpan>&gt;</MobileSpan>
-                    <Input
-                        title="terminal-input"
-                        type="text"
-                        id="terminal-input"
-                        autoComplete="off"
-                        spellCheck="false"
-                        autoFocus
-                        autoCapitalize="off"
-                        ref={inputRef}
-                        value={inputVal}
-                        onKeyDown={handleKeyDown}
-                        onChange={handleChange}
-                    />
-                </InputLine>
-            </Form>
-
-            {cmdHistory.map((cmdH, index) => {
-                const commandArray = _.split(_.trim(cmdH), " ");
-                const validCommand = _.find(commands, { cmd: commandArray[0] });
-                const contextValue = {
-                    arg: _.drop(commandArray),
-                    history: cmdHistory,
-                    rerender,
-                    index,
-                    clearHistory,
-                };
-                return (
-                    <div key={_.uniqueId(`${cmdH}_`)}>
+        <WindowFrame>
+            <TitleBar>
+                <TrafficLights>
+                    <TrafficLight $color="red" title="Close" />
+                    <TrafficLight $color="yellow" title="Minimize" />
+                    <TrafficLight $color="green" title="Maximize" />
+                </TrafficLights>
+                <WindowTitle>deny@terminal: ~</WindowTitle>
+            </TitleBar>
+            <WindowContent ref={containerRef}>
+                <Wrapper data-testid="terminal-wrapper">
+                    {hints.length > 1 && (
                         <div>
-                            <TermInfo />
-                            <DesktopSpan> </DesktopSpan>
-                            <MobileBr />
-                            <InputLine>
-                                <MobileSpan>&gt;</MobileSpan>
-                                <span data-testid="input-command">{cmdH}</span>
-                            </InputLine>
+                            {hints.map(hCmd => (
+                                <Hints key={hCmd}>{hCmd}</Hints>
+                            ))}
                         </div>
-                        {validCommand ? (
-                            <termContext.Provider value={contextValue}>
-                                <Output index={index} cmd={commandArray[0]} />
-                            </termContext.Provider>
-                        ) : cmdH === "" ? (
-                            <Empty />
-                        ) : (
-                            <CmdNotFound data-testid={`not-found-${index}`}>
-                                perintah tidak ditemukan: {cmdH}
-                            </CmdNotFound>
-                        )}
-                    </div>
-                );
-            })}
-        </Wrapper>
+                    )}
+                    <Form onSubmit={handleSubmit}>
+                        <TermInfo>
+                            <Input
+                                title="terminal-input"
+                                type="text"
+                                id="terminal-input"
+                                autoComplete="off"
+                                spellCheck="false"
+                                autoFocus
+                                autoCapitalize="off"
+                                ref={inputRef}
+                                value={inputVal}
+                                onKeyDown={handleKeyDown}
+                                onChange={handleChange}
+                            />
+                        </TermInfo>
+                    </Form>
+
+                    {cmdHistory.map((cmdH, index) => {
+                        const commandArray = _.split(_.trim(cmdH), " ");
+                        const validCommand = _.find(commands, { cmd: commandArray[0] });
+                        const contextValue = {
+                            arg: _.drop(commandArray),
+                            history: cmdHistory,
+                            rerender,
+                            index,
+                            clearHistory,
+                        };
+                        return (
+                            <div key={_.uniqueId(`${cmdH}_`)}>
+                                <div>
+                                    <TermInfo>
+                                        <span data-testid="input-command">{cmdH}</span>
+                                    </TermInfo>
+                                </div>
+                                {validCommand ? (
+                                    <termContext.Provider value={contextValue}>
+                                        <Output index={index} cmd={commandArray[0]} />
+                                    </termContext.Provider>
+                                ) : cmdH === "" ? (
+                                    <Empty />
+                                ) : (
+                                    <CmdNotFound data-testid={`not-found-${index}`}>
+                                        perintah tidak ditemukan: {cmdH}
+                                    </CmdNotFound>
+                                )}
+                            </div>
+                        );
+                    })}
+                </Wrapper>
+            </WindowContent>
+        </WindowFrame>
     );
 };
 

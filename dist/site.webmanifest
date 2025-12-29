@@ -1,19 +1,17 @@
 {
-    "name": "Deny.Biz.Id Terminal Portfolio",
-    "short_name": "Deny Terminal",
+    "name": "Deny Porto | deny.biz.id",
+    "short_name": "Deny Porto",
+    "description": "Ini adalah halaman portofolioku.",
     "icons": [
         {
-            "src": "/android-chrome-192x192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "/android-chrome-512x512.png",
+            "src": "/favicon.png",
             "sizes": "512x512",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any maskable"
         }
     ],
-    "theme_color": "#1d2a35",
-    "background_color": "#1d2a35",
-    "display": "standalone"
+    "theme_color": "#1e1e2e",
+    "background_color": "#1e1e2e",
+    "display": "standalone",
+    "start_url": "/"
 }

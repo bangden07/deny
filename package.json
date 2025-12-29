@@ -33,6 +33,7 @@
     "@typescript-eslint/eslint-plugin": "^5.59.6",
     "@typescript-eslint/parser": "^5.59.6",
     "@vitejs/plugin-react": "^4.0.0",
+    "esbuild": "^0.27.2",
     "eslint": "^8.40.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-react": "^7.32.2",
@@ -40,8 +41,8 @@
     "jsdom": "^22.0.0",
     "prettier": "^2.8.8",
     "typescript": "^5.0.4",
-    "vite": "^4.5.3",
-    "vite-plugin-pwa": "^0.14.7",
-    "vitest": "^0.31.1"
+    "vite": "^7.3.0",
+    "vite-plugin-pwa": "^1.2.0",
+    "vitest": "^4.0.16"
   }
 }
