@@ -60,7 +60,7 @@ const Welcome: React.FC = () => {
                 <Seperator>----</Seperator>
                 <div>
                     Source code proyek ini dapat ditemukan di{" "}
-                    <Link href="https://github.com/bangden07/terminal-portfolio">
+                    <Link href="https://github.com/bangden07/deny">
                         repo GitHub
                     </Link>
                     .
