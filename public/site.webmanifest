@@ -1,0 +1,17 @@
+{
+    "name": "Deny Porto | deny.biz.id",
+    "short_name": "Deny Porto",
+    "description": "Ini adalah halaman portofolioku.",
+    "icons": [
+        {
+            "src": "/favicon.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "theme_color": "#1e1e2e",
+    "background_color": "#1e1e2e",
+    "display": "standalone",
+    "start_url": "/"
+}

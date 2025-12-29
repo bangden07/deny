@@ -1,0 +1,9 @@
+name = "deny-porto"
+compatibility_date = "2024-01-01"
+
+[site]
+bucket = "./dist"
+
+# Uncomment if using custom domain
+# [env.production]
+# vars = { ENVIRONMENT = "production" }
