@@ -2,21 +2,5 @@
 # Documentation: https://developers.cloudflare.com/pages/
 
 name = "deny-terminal-portfolio"
-compatibility_date = "2024-01-01"
 pages_build_output_dir = "dist"
-
-# Build configuration
-[build]
-command = "npm run build"
-
-# Environment variables (optional)
-# [vars]
-# API_URL = "https://api.example.com"
-
-# Production environment
-[env.production]
-# Add production-specific settings here
-
-# Preview environment (for pull request previews)
-[env.preview]
-# Add preview-specific settings here
+compatibility_date = "2024-01-01"
