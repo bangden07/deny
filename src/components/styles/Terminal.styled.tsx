@@ -15,17 +15,14 @@ export const TitleBar = styled.div`
   display: flex;
   align-items: center;
   padding: 12px 16px;
-  background: linear-gradient(
-    180deg,
-    ${({ theme }) => theme.colors.body} 0%,
-    ${({ theme }) => `${theme.colors.body}ee`} 100%
-  );
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  position: sticky;
+  background: ${({ theme }) => theme.colors.body};
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
   user-select: none;
-  flex-shrink: 0;
 `;
 
 export const TrafficLights = styled.div`
@@ -89,10 +86,13 @@ export const WindowTitle = styled.span`
 export const WindowContent = styled.div`
   flex: 1;
   padding: 1rem 1.25rem;
+  padding-top: 60px; /* Space for fixed TitleBar */
   overflow-y: auto;
+  height: 100vh;
   
   @media (max-width: 550px) {
     padding: 0.75rem 1rem;
+    padding-top: 55px;
   }
 `;
 

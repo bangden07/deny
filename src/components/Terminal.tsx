@@ -91,6 +91,14 @@ const Terminal = () => {
         setRerender(true);
         setHints([]);
         setPointer(-1);
+
+        // Auto scroll to bottom to show all command output
+        setTimeout(() => {
+            if (containerRef.current) {
+                (containerRef.current as HTMLDivElement).scrollTop =
+                    (containerRef.current as HTMLDivElement).scrollHeight;
+            }
+        }, 100);
     };
 
     const clearHistory = () => {
